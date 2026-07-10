@@ -11,7 +11,7 @@ const Footer = ({ activeTab, setActiveTab }) => {
   };
 
   return (
-<nav className="fixed bottom-0 left-0 w-full z-50 flex flex-row-reverse justify-around items-center px-4 pb-6 pt-3.5 bg-white/90 backdrop-blur-xl rounded-t-[32px] shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-neutral-100">      {/* الرئيسية */}
+    <nav dir="rtl" className="fixed bottom-0 left-0 w-full z-50 flex flex-row justify-around items-center px-4 pb-6 pt-3.5 bg-white/90 backdrop-blur-xl rounded-t-[32px] shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-neutral-100">
       <button 
         onClick={() => handleNavigation('home')} 
         className={`flex flex-col items-center justify-center px-4 py-2 rounded-2xl transition-all duration-300 outline-none

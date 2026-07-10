@@ -259,7 +259,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="bg-[#FAFAFA] text-neutral-800 min-h-screen pb-36 overflow-x-hidden antialiased relative font-sans">
+    <div className="bg-[#FAFAFA] text-neutral-800 min-h-screen pb-36 overflow-x-hidden antialiased relative font-sans" dir="rtl">
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="max-w-4xl mx-auto px-6 pt-8 space-y-12">
