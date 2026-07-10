@@ -86,7 +86,13 @@ export default function Payments() {
 
   // التوجيه لصفحة جلساتي عند تأكيد النجاح
   const handleGoToMySessions = () => {
-    navigate('/my-sessions', { state: { bookedDoctor: doctorInfo, plan: planDetails[selectedPlan] } });
+    navigate('/dashboard', {
+      state: {
+        targetTab: 'sessions',
+        bookedDoctor: doctorInfo,
+        plan: planDetails[selectedPlan]
+      }
+    });
   };
 
   return (

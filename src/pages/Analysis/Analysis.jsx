@@ -120,11 +120,15 @@ function Analysis() {
       ]} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
         <XAxis dataKey="name" tick={{ fontFamily: 'Cairo', fontSize: 12, fill: '#64748b' }} axisLine={false} tickLine={false} />
         <YAxis tick={{ fontFamily: 'Cairo', fontSize: 12, fill: '#64748b' }} axisLine={false} tickLine={false} />
-        <Tooltip contentStyle={{ fontFamily: 'Cairo', borderRadius: '8px', direction: 'rtl' }} />
+        <Tooltip
+          cursor={{ stroke: '#0f766e', strokeWidth: 1, strokeDasharray: '4 4' }}
+          contentStyle={{ fontFamily: 'Cairo', borderRadius: '14px', direction: 'rtl', border: '1px solid #d6e9e6', boxShadow: '0 10px 30px rgba(15,118,110,0.15)', padding: '10px 14px' }}
+          labelStyle={{ fontWeight: 800, color: '#0f766e', marginBottom: '6px' }}
+        />
         
         
-        <Line type="monotone" dataKey="happy" stroke="#10b981" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
-        <Line type="monotone" dataKey="calm" stroke="#3b82f6" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
+        <Line type="monotone" dataKey="happy" stroke="#0f766e" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
+        <Line type="monotone" dataKey="calm" stroke="#83b9b5" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
         <Line type="monotone" dataKey="anxious" stroke="#f59e0b" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
       </LineChart>
     </ResponsiveContainer>
@@ -136,13 +140,6 @@ function Analysis() {
             
 <div className="analysis-section-box part-4 analysis-two-columns-grid">
 
-  
-
-
-
-<div className="analysis-section-box part-4 analysis-two-columns-grid">
-
-  
   <div className="analysis-gray-column-card">
     <div className="card-header-minimal">
       <h3 className="column-card-title">توزيع الحالات والاضطرابات</h3>
@@ -167,9 +164,9 @@ function Analysis() {
               dataKey="value"
             >
               
-              <Cell fill="#f59e0b" /> 
-              <Cell fill="#ef4444" /> 
-              <Cell fill="#3b82f6" /> 
+              <Cell fill="#0f766e" /> 
+              <Cell fill="#83b9b5" /> 
+              <Cell fill="#a6cec5" /> 
             </Pie>
             <Tooltip contentStyle={{ fontFamily: 'Cairo', borderRadius: '8px', direction: 'rtl' }} />
           </PieChart>
@@ -178,17 +175,17 @@ function Analysis() {
 
       <div className="pie-chart-legends-side">
         <div className="pie-legend-row">
-          <span className="pie-dot" style={{ backgroundColor: '#f59e0b' }}></span>
+          <span className="pie-dot" style={{ backgroundColor: '#0f766e' }}></span>
           <span className="pie-name">القلق</span>
           <span className="pie-percentage">٤٥٪</span>
         </div>
         <div className="pie-legend-row">
-          <span className="pie-dot" style={{ backgroundColor: '#ef4444' }}></span>
+          <span className="pie-dot" style={{ backgroundColor: '#83b9b5' }}></span>
           <span className="pie-name">الاكتئاب</span>
           <span className="pie-percentage">٣٥٪</span>
         </div>
         <div className="pie-legend-row">
-          <span className="pie-dot" style={{ backgroundColor: '#3b82f6' }}></span>
+          <span className="pie-dot" style={{ backgroundColor: '#a6cec5' }}></span>
           <span className="pie-name">التوتر</span>
           <span className="pie-percentage">٢٠٪</span>
         </div>
@@ -211,7 +208,7 @@ function Analysis() {
           <span className="type-label">فردي</span>
         </div>
         <div className="type-legend-item">
-          <span className="type-dot" style={{ backgroundColor: '#a855f7', width: '10px', height: '10px', borderRadius: '50%', display: 'inline-block' }}></span>
+          <span className="type-dot" style={{ backgroundColor: '#83b9b5', width: '10px', height: '10px', borderRadius: '50%', display: 'inline-block' }}></span>
           <span className="type-label">جماعي</span>
         </div>
       </div>
@@ -228,7 +225,7 @@ function Analysis() {
         </div>
         <div className="split-progress-bar">
           <div className="progress-segment" style={{ width: '65%', backgroundColor: '#0f766e' }}></div>
-          <div className="progress-segment" style={{ width: '35%', backgroundColor: '#a855f7' }}></div>
+          <div className="progress-segment" style={{ width: '35%', backgroundColor: '#83b9b5' }}></div>
         </div>
       </div>
 
@@ -240,7 +237,7 @@ function Analysis() {
         </div>
         <div className="split-progress-bar">
           <div className="progress-segment" style={{ width: '55%', backgroundColor: '#0f766e' }}></div>
-          <div className="progress-segment" style={{ width: '45%', backgroundColor: '#a855f7' }}></div>
+          <div className="progress-segment" style={{ width: '45%', backgroundColor: '#83b9b5' }}></div>
         </div>
       </div>
 
@@ -252,41 +249,11 @@ function Analysis() {
         </div>
         <div className="split-progress-bar">
           <div className="progress-segment" style={{ width: '70%', backgroundColor: '#0f766e' }}></div>
-          <div className="progress-segment" style={{ width: '30%', backgroundColor: '#a855f7' }}></div>
+          <div className="progress-segment" style={{ width: '30%', backgroundColor: '#83b9b5' }}></div>
         </div>
       </div>
 
     </div>
-  </div>
-
-</div>
-
-</div>
-
-            
-         
-<div className="analysis-section-box part-5 analysis-insights-box">
-  
-  
-  <div className="insights-content-side">
-    <div className="insights-icon-wrapper">
-      
-      <i className="fa-regular fa-lightbulb insight-bulb-icon"></i>
-    </div>
-    
-    <div className="insights-text-wrapper">
-      <h3 className="insights-box-title">رؤى تحليلية ذكية</h3>
-      <p className="insights-box-description">
-        نلاحظ تحسناً ملحوظاً في حالات القلق بنسبة <strong className="highlight-text">١٥٪</strong> عند دمج الجلسات الجماعية مع العلاج الفردي. قد ترغب في جدولة المزيد من الجلسات الجماعية لمرضى "الاضطراب العام" في الشهر القادم.
-      </p>
-    </div>
-  </div>
-
-  
-  <div className="insights-action-side">
-    <button className="export-report-btn">
-      <span>تصدير التقرير</span>
-    </button>
   </div>
 
 </div>

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { acceptSession } from '../../store/scheduleStore';
 import './Dashboard.css';
 
 function Dashboard() {
+    const navigate = useNavigate();
 
     const today = new Date().toLocaleDateString('ar-EG', {
         weekday: 'long',
@@ -19,6 +22,21 @@ function Dashboard() {
         { id: 2, name: "محمد علي", time: "05:30 م", type: "clinic", typeText: "في العيادة", icon: "fa-house-medical", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" },
         { id: 3, name: "ياسمين ممدوح", time: "07:00 م", type: "online", typeText: "أونلاين", icon: "fa-video", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150" }
     ];
+
+    const [requests, setRequests] = useState([
+        { id: 'r1', name: 'ندى أحمد', type: 'طلب استشارة أولية', note: '"أعاني من قلق مستمر منذ أسبوعين وأحتاج للمساعدة في إدارة التوتر العملي."', day: 'الأحد', date: '05 يوليو', time: '03:00 م', sessionType: 'أونلاين', icon: 'user-icon', iconClass: 'fa-solid fa-user-plus' },
+        { id: 'r2', name: 'خالد محمود', type: 'طلب إعادة حجز', note: '', day: 'الثلاثاء', date: '07 يوليو', time: '04:30 م', sessionType: 'حضوري', icon: 'calendar-icon', iconClass: 'fa-regular fa-calendar-check' },
+    ]);
+
+    const handleAccept = (req) => {
+        acceptSession({ patient: req.name, day: req.day, date: req.date, time: req.time, type: req.sessionType });
+        setRequests((prev) => prev.filter((r) => r.id !== req.id));
+        navigate('/doctor/timetable');
+    };
+
+    const handleReject = (id) => {
+        setRequests((prev) => prev.filter((r) => r.id !== id));
+    };
 
     return (
         <div className="dashboard-wrapper">
@@ -94,6 +112,9 @@ function Dashboard() {
                                         <i className={`fa-solid ${patient.icon}`}></i>
                                         <span>{patient.typeText}</span>
                                     </div>
+                                    <button className="start-now-btn" onClick={() => navigate('/doctor/meetings')}>
+                                        ابدأ الآن
+                                    </button>
                                 </div>
                             </div>
                         ))}
@@ -109,42 +130,28 @@ function Dashboard() {
 
                     <div className="requests-container">
 
-                        { }
-                        <div className="request-box">
-                            <div className="request-user-info">
-                                <div className="request-icon-wrapper user-icon">
-                                    <i className="fa-solid fa-user-plus"></i>
-                                </div>
-                                <div className="request-details">
-                                    <h5>ندى أحمد</h5>
-                                    <span className="request-type">طلب استشارة أولية</span>
-                                </div>
-                            </div>
-                            <p className="request-note">
-                                "أعاني من قلق مستمر منذ أسبوعين وأحتاج للمساعدة في إدارة التوتر العملي."
-                            </p>
-                            <div className="request-actions">
-                                <button className="action-btn accept-btn">قبول</button>
-                                <button className="action-btn reject-btn">رفض</button>
-                            </div>
-                        </div>
+                        {requests.length === 0 && (
+                            <p className="no-requests-text">لا توجد طلبات جديدة حالياً</p>
+                        )}
 
-                        { }
-                        <div className="request-box">
-                            <div className="request-user-info">
-                                <div className="request-icon-wrapper calendar-icon">
-                                    <i className="fa-regular fa-calendar-check"></i>
+                        {requests.map((req) => (
+                            <div className="request-box" key={req.id}>
+                                <div className="request-user-info">
+                                    <div className={`request-icon-wrapper ${req.icon}`}>
+                                        <i className={req.iconClass}></i>
+                                    </div>
+                                    <div className="request-details">
+                                        <h5>{req.name}</h5>
+                                        <span className="request-type">{req.type}</span>
+                                    </div>
                                 </div>
-                                <div className="request-details">
-                                    <h5>خالد محمود</h5>
-                                    <span className="request-type">طلب إعادة حجز</span>
+                                {req.note && <p className="request-note">{req.note}</p>}
+                                <div className={`request-actions ${req.note ? '' : 'no-margin'}`}>
+                                    <button className="action-btn accept-btn" onClick={() => handleAccept(req)}>قبول</button>
+                                    <button className="action-btn reject-btn" onClick={() => handleReject(req.id)}>رفض</button>
                                 </div>
                             </div>
-                            <div className="request-actions no-margin">
-                                <button className="action-btn accept-btn">قبول</button>
-                                <button className="action-btn reject-btn">رفض</button>
-                            </div>
-                        </div>
+                        ))}
 
                     </div>
                 </div>
@@ -156,7 +163,6 @@ function Dashboard() {
                     <h4>نشاط المرضى الأخير</h4>
                     <div className="activity-filter">
                         <span className="filter-option active">تحديثات المزاج</span>
-                        <span className="filter-option">مذكرات</span>
                     </div>
                 </div>
 
@@ -174,22 +180,6 @@ function Dashboard() {
                             </div>
                             <p className="activity-text">
                                 قامت بتحديث مزاجها: <span className="mood-quote font-sad">"أشعر بالإرهاق الشديد اليوم"</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    { }
-                    <div className="activity-item">
-                        <div className="activity-icon-side note-shared">
-                            <i className="fa-regular fa-sticky-note"></i>
-                        </div>
-                        <div className="activity-content-side">
-                            <div className="activity-user-meta">
-                                <h5>أحمد محمد</h5>
-                                <span className="activity-time">منذ 4 ساعات</span>
-                            </div>
-                            <p className="activity-text">
-                                شارك مذكرة جديدة: <span className="mood-quote font-note">"تحدي الأفكار السلبية في العمل"</span>
                             </p>
                         </div>
                     </div>

@@ -1,73 +1,34 @@
 import { Home, Flower, Compass, MessageSquare, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import "./Footer.css";
 
 function Footer({ activeTab }) {
+  const navigate = useNavigate();
+  const navItems = [
+    { id: "home", label: "الرئيسية", icon: Home, path: "/doctor/dashboard" },
+    { id: "sessions", label: "جلساتي", icon: Flower, path: "/doctor/sessions" },
+    { id: "discover", label: "اكتشف", icon: Compass, path: "/doctor/library" },
+    { id: "chats", label: "محادثات", icon: MessageSquare, path: "/doctor/chats" },
+    { id: "profile", label: "حسابي", icon: User, path: "/doctor/profile" },
+  ];
+
   return (
     <footer className="main-footer">
       <nav className="footer-nav">
-        { }
-        <div
-          className={`nav-item ${activeTab === "home" ? "active" : ""}`}
-          title="الرئيسية"
-        >
-          <div className="icon-circle">
-            <Home size={22} strokeWidth={activeTab === "home" ? 2 : 1.5} />
-          </div>
-          <span>الرئيسية</span>
-        </div>
-
-        { }
-        <div
-          className={`nav-item ${activeTab === "sessions" ? "active" : ""}`}
-          title="جلساتي"
-        >
-          <div className="icon-circle">
-            <Flower
-              size={22}
-              strokeWidth={activeTab === "sessions" ? 2 : 1.5}
-            />
-          </div>
-          <span>جلساتي</span>
-        </div>
-
-        { }
-        <div
-          className={`nav-item ${activeTab === "discover" ? "active" : ""}`}
-          title="اكتشف"
-        >
-          <div className="icon-circle">
-            <Compass
-              size={22}
-              strokeWidth={activeTab === "discover" ? 2 : 1.5}
-            />
-          </div>
-          <span>اكتشف</span>
-        </div>
-
-        { }
-        <div
-          className={`nav-item ${activeTab === "chats" ? "active" : ""}`}
-          title="محادثات"
-        >
-          <div className="icon-circle">
-            <MessageSquare
-              size={22}
-              strokeWidth={activeTab === "chats" ? 2 : 1.5}
-            />
-          </div>
-          <span>محادثات</span>
-        </div>
-
-        { }
-        <div
-          className={`nav-item ${activeTab === "profile" ? "active" : ""}`}
-          title="حسابي"
-        >
-          <div className="icon-circle">
-            <User size={22} strokeWidth={activeTab === "profile" ? 2 : 1.5} />
-          </div>
-          <span>حسابي</span>
-        </div>
+        {navItems.map(({ id, label, icon: Icon, path }) => (
+          <button
+            key={id}
+            type="button"
+            className={`nav-item ${activeTab === id ? "active" : ""}`}
+            title={label}
+            onClick={() => navigate(path)}
+          >
+            <div className="icon-circle">
+              <Icon size={22} strokeWidth={activeTab === id ? 2 : 1.5} />
+            </div>
+            <span>{label}</span>
+          </button>
+        ))}
       </nav>
     </footer>
   );

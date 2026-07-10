@@ -75,6 +75,7 @@ const Auth = () => {
 
             <button
               type="button"
+              onClick={() => navigate('/doctor/dashboard')}
               className="w-full py-4 bg-gradient-to-r from-[#316764] to-[#83B9B5] text-white rounded-full font-bold shadow-md hover:scale-[1.02] transition-all cursor-pointer"
             >
               تسجيل الدخول كطبيب

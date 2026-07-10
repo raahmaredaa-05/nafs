@@ -19,8 +19,7 @@ const UserSignup = () => {
     // طباعة البيانات في الكونسول (للتأكد)
     console.log('Form Submitted', formData);
 
-    // التوجيه لصفحة تسجيل الدخول فوراً عند الضغط
-    navigate('/login');
+    navigate('/quiz');
   };
 
   return (

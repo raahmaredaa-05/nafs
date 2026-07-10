@@ -26,7 +26,7 @@ const Footer = ({ activeTab, setActiveTab }) => {
 
       {/* محادثات */}
       <button 
-        onClick={() => handleNavigation('chat')} 
+        onClick={() => navigate('/doctor/chats')} 
         className={`flex flex-col items-center justify-center px-4 py-2 rounded-2xl transition-all duration-300 outline-none
           ${activeTab === 'chat' 
             ? 'text-[#0F766E] bg-[#A6CEC5] font-bold shadow-sm' 
@@ -39,7 +39,7 @@ const Footer = ({ activeTab, setActiveTab }) => {
 
       {/* جلساتي */}
       <button 
-        onClick={() => handleNavigation('sessions')} 
+        onClick={() => navigate('/doctor/sessions')} 
         className={`flex flex-col items-center justify-center px-4 py-2 rounded-2xl transition-all duration-300 outline-none
           ${activeTab === 'sessions' 
             ? 'text-[#0F766E] bg-[#A6CEC5] font-bold shadow-sm' 
@@ -52,7 +52,7 @@ const Footer = ({ activeTab, setActiveTab }) => {
 
       {/* اكتشف */}
       <button 
-        onClick={() => handleNavigation('explore')} 
+        onClick={() => navigate('/doctor/library')} 
         className={`flex flex-col items-center justify-center px-4 py-2 rounded-2xl transition-all duration-300 outline-none
           ${activeTab === 'explore' 
             ? 'text-[#0F766E] bg-[#A6CEC5] font-bold shadow-sm' 
@@ -65,7 +65,7 @@ const Footer = ({ activeTab, setActiveTab }) => {
 
       {/* حسابي */}
       <button 
-        onClick={() => handleNavigation('profile')} 
+        onClick={() => navigate('/profile-progress')} 
         className={`flex flex-col items-center justify-center px-4 py-2 rounded-2xl transition-all duration-300 outline-none
           ${activeTab === 'profile' 
             ? 'text-[#0F766E] bg-[#A6CEC5] font-bold shadow-sm' 

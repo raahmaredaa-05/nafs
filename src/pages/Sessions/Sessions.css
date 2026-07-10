@@ -2,6 +2,90 @@
     direction: rtl;
 }
 
+.my-booked-sessions {
+    background: #fff;
+    border: 1px solid #eef2f6;
+    border-radius: 18px;
+    padding: 22px 24px;
+    margin-bottom: 24px;
+    direction: rtl;
+}
+
+.my-booked-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: #0f766e;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.my-booked-empty {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.my-booked-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+}
+
+.my-booked-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: #f8fafc;
+    border: 1px solid #eef2f6;
+    border-right: 4px solid #0f766e;
+}
+
+.my-booked-card.in-person {
+    border-right-color: #83b9b5;
+}
+
+.my-booked-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #e6f0ef;
+    color: #0f766e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.my-booked-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+}
+
+.my-booked-patient {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.my-booked-time {
+    font-size: 11px;
+    color: #64748b;
+}
+
+.my-booked-type {
+    font-size: 11px;
+    font-weight: 700;
+    color: #0f766e;
+    background: #e6f0ef;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
 .sessions-main-layout {
     display: flex;
     flex-direction: column;

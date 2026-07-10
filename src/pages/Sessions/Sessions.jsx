@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ProfileHeader from '../../Components/Header/Header';
-import ProfileFooter from '../../Components/Footer/Footer';
 import Sidebar from '../../Components/Sidebar/Sidebar';
+import { useSchedule } from '../../store/scheduleStore';
 import './Sessions.css';
 
 function Sessions() {
     const [activeDoctorId, setActiveDoctorId] = useState(null);
+    const navigate = useNavigate();
+    const { sessions } = useSchedule();
 
     const handleBookClick = (id) => {
         setActiveDoctorId(activeDoctorId === id ? null : id);
+    };
+
+    const handleConfirmBooking = () => {
+        navigate('/doctor-checkout', {
+            state: {
+                doctorData: {
+                    name: 'د. أحمد مصطفي',
+                    title: 'استشاري الطب النفسي وعلاج الإدمان',
+                    rating: 4.9,
+                    reviews: 120,
+                    date: 'السبت، 04 يوليو',
+                    time: '04:00 مساءً',
+                    duration: '٥٠ دقيقة',
+                    avatar: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=150',
+                }
+            }
+        });
     };
 
     return (
@@ -33,6 +53,30 @@ function Sessions() {
                                         نخبة من الأطباء النفسيين والمستشارين المعتمدين لمساعدتك في رحلة توازنك النفسي.
                                     </p>
                                 </div>
+                            </div>
+
+                            <div className="my-booked-sessions">
+                                <h3 className="my-booked-title">
+                                    <i className="fa-regular fa-calendar-check"></i> جلساتي المحجوزة
+                                </h3>
+                                {sessions.length === 0 ? (
+                                    <p className="my-booked-empty">لا توجد جلسات محجوزة بعد.</p>
+                                ) : (
+                                    <div className="my-booked-grid">
+                                        {sessions.map((s) => (
+                                            <div className={`my-booked-card ${s.type === 'أونلاين' ? 'online' : 'in-person'}`} key={s.id}>
+                                                <div className="my-booked-icon">
+                                                    <i className={`fa-solid ${s.type === 'أونلاين' ? 'fa-video' : 'fa-house-user'}`}></i>
+                                                </div>
+                                                <div className="my-booked-meta">
+                                                    <span className="my-booked-patient">{s.patient}</span>
+                                                    <span className="my-booked-time">{s.day} {s.date} • {s.time}</span>
+                                                </div>
+                                                <span className="my-booked-type">{s.type}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
 
                             
@@ -201,7 +245,7 @@ function Sessions() {
                                                     </div>
 
                                                     <div className="booking-confirm-wrapper">
-                                                        <button className="confirm-booking-final-btn">
+                                                        <button className="confirm-booking-final-btn" onClick={handleConfirmBooking}>
                                                             <i className="fa-solid fa-circle-check"></i>
                                                             <span>تأكيد الحجز والدفع</span>
                                                         </button>
@@ -221,8 +265,6 @@ function Sessions() {
 
                 </div>
             </main>
-
-            <ProfileFooter activeTab="sessions" />
         </div>
     );
 }

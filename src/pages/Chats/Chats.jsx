@@ -3,18 +3,13 @@ import { useChatHub } from "../../hooks/useChatHub";
 import {
     Send,
     Search,
-    Settings,
-    Bell,
     Info,
     Smile,
     ShieldCheck,
-    Compass,
-    Home,
-    User,
-    Activity,
     Sparkles,
-    Plus,
 } from "lucide-react";
+import Header from "../../components/layout/Header";
+import Footer from "../../components/layout/Footer";
 import "./Chats.css";
 
 function Chats() {
@@ -22,7 +17,6 @@ function Chats() {
     const [searchQuery, setSearchQuery] = useState("");
     const [inputMsg, setInputMsg] = useState("");
     const [isTyping, setIsTyping] = useState(false);
-    const [navActiveTab, setNavActiveTab] = useState("اكتشف"); // Navigation items: 'الرئيسية', 'جلساتي', 'اكتشف', 'حسابي'
 
     const messagesEndRef = useRef(null);
 
@@ -188,41 +182,8 @@ function Chats() {
     };
 
     return (
-        <div className="chats-page">
-            {/* Exact Header Layout from Figma */}
-            <header className="nafs-header">
-                <div className="header-left">
-                    <a href="#logo" className="logo">
-                        نفس
-                    </a>
-                </div>
-
-                <div className="header-center">
-                    <div className="header-search-wrapper">
-                        <Search size={16} className="search-icon-inside" />
-                        <input
-                            type="text"
-                            placeholder="البحث في المساحات الآمنة..."
-                            className="header-search-input"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
-                    </div>
-                </div>
-
-                <div className="header-right">
-                    <div
-                        className="user-avatar-circle"
-                        title="الملف الشخصي"
-                    ></div>
-                    <button className="header-btn" title="الإعدادات">
-                        <Settings size={22} />
-                    </button>
-                    <button className="header-btn" title="الإشعارات">
-                        <Bell size={22} />
-                    </button>
-                </div>
-            </header>
+        <div className="chats-page" dir="rtl">
+            <Header activeTab="chat" />
 
             {/* Main Container */}
             <main className="chats-main-content">
@@ -393,6 +354,17 @@ function Chats() {
                         <div className="active-rooms-panel">
                             <h3>الغرف النشطة</h3>
 
+                            <div className="rooms-search-wrapper">
+                                <Search size={16} className="rooms-search-icon" />
+                                <input
+                                    type="text"
+                                    placeholder="ابحث عن مساحة آمنة..."
+                                    className="rooms-search-input"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                />
+                            </div>
+
                             <div className="rooms-list-stack">
                                 {getFilteredRooms().map((room) => {
                                     const isSelected = room.id === activeRoomId;
@@ -421,53 +393,11 @@ function Chats() {
                                 })}
                             </div>
                         </div>
-
-                        {/* Custom Private Space Card matching Figma mockup */}
-                        <div className="create-custom-space-card">
-                            <h4>هل تريد مساحة خاصة؟</h4>
-                            <p>
-                                أنشئ غرفتك الخاصة وادعُ أصدقاءك للحديث بهوية
-                                مجهولة.
-                            </p>
-                            <button className="create-space-btn">
-                                إنشاء مساحة
-                            </button>
-                        </div>
                     </div>
                 </div>
             </main>
 
-            {/* Sticky Bottom Navigation Bar from Figma Screenshot */}
-            <nav className="nafs-bottom-nav">
-                <a
-                    onClick={() => setNavActiveTab("حسابي")}
-                    className={`nav-item-tab ${navActiveTab === "حسابي" ? "active-tab" : ""}`}
-                >
-                    <User size={22} />
-                    <span>حسابي</span>
-                </a>
-                <a
-                    onClick={() => setNavActiveTab("اكتشف")}
-                    className={`nav-item-tab ${navActiveTab === "اكتشف" ? "active-tab" : ""}`}
-                >
-                    <Compass size={22} />
-                    <span>اكتشف</span>
-                </a>
-                <a
-                    onClick={() => setNavActiveTab("جلساتي")}
-                    className={`nav-item-tab ${navActiveTab === "جلساتي" ? "active-tab" : ""}`}
-                >
-                    <Activity size={22} />
-                    <span>جلساتي</span>
-                </a>
-                <a
-                    onClick={() => setNavActiveTab("الرئيسية")}
-                    className={`nav-item-tab ${navActiveTab === "الرئيسية" ? "active-tab" : ""}`}
-                >
-                    <Home size={22} />
-                    <span>الرئيسية</span>
-                </a>
-            </nav>
+            <Footer activeTab="chat" />
         </div>
     );
 }

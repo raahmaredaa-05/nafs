@@ -19,6 +19,8 @@
 }
 
 .nav-item {
+  background: transparent;
+  border: 0;
   display: flex;
   flex-direction: column;
   align-items: center;

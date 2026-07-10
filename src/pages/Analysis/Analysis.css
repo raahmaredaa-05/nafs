@@ -242,14 +242,15 @@
    تنسيقات الجزء الثالث: الـ Line Chart بوكس
    ========================================================================== */
 .analysis-chart-section {
-  background: #ffffff;
-  border: 1px solid #e9ecef;
-  border-radius: 14px;
-  padding: 24px 30px;
+  background: linear-gradient(160deg, #ffffff 0%, #f2f8f7 100%);
+  border: 1px solid #e2efec;
+  border-radius: 18px;
+  padding: 26px 30px;
   min-height: auto !important; 
   display: flex;
   flex-direction: column;
   gap: 24px;
+  box-shadow: 0 6px 22px rgba(15, 118, 110, 0.06);
 }
 
 .chart-section-header {
@@ -269,7 +270,7 @@
   margin: 0;
   font-size: 18px;
   font-weight: 800;
-  color: var;
+  color: #0f766e;
 }
 
 .chart-box-subtitle {
@@ -303,8 +304,8 @@
 }
 
 
-.happy-dot { background-color: #10b981; }   
-.calm-dot { background-color: #3b82f6; }    
+.happy-dot { background-color: #0f766e; }   
+.calm-dot { background-color: #83b9b5; }    
 .anxious-dot { background-color: #f59e0b; } 
 
 .legend-label {

@@ -22,9 +22,12 @@
 }
 
 .brand-name {
+  background: transparent;
+  border: 0;
   font-size: 20px;
   font-weight: 700;
   color: var(--primary-color);
+  cursor: pointer;
   letter-spacing: 0.5px;
 }
 

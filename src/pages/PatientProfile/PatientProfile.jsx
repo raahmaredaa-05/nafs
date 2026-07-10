@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import ProfileHeader from '../../Components/Header/Header';
-import ProfileFooter from '../../Components/Footer/Footer';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 import './PatientProfile.css';
 
 const chartData = {
@@ -30,6 +30,7 @@ function PatientProfile() {
             <ProfileHeader />
 
             <main className="patient-profile-main">
+                <Sidebar activeTab="patients" />
                 <div className="patient-profile-container">
 
                     
@@ -203,8 +204,6 @@ function PatientProfile() {
 
                 </div>
             </main>
-
-<ProfileFooter activeTab="profile" />
         </div>
     );
 }

@@ -68,10 +68,10 @@ const Verification = () => {
               
               {/* 3. الزر المعدل */}
               <button 
-                onClick={() => navigate('/login')} 
+                onClick={() => navigate('/doctor/dashboard')} 
                 className="px-10 py-4 bg-[#2A5C58] text-white rounded-full font-bold hover:bg-[#1f4a46] transition"
               >
-                العودة للصفحة الرئيسية
+                الانتقال إلى لوحة الطبيب
               </button>
             </div>
           )}

@@ -1,6 +1,5 @@
 import React from 'react';
 import ProfileHeader from '../../Components/Header/Header';
-import ProfileFooter from '../../Components/Footer/Footer';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import './Meetings.css';
 
@@ -12,6 +11,7 @@ function Meetings() {
             <main className="doctor-work-main">
                 <div className="doctor-work-container">
 
+                    <Sidebar activeTab="meetings" />
 
                     <section className="content-area">
                         <div className="meeting-workspace-layout">
@@ -109,8 +109,6 @@ function Meetings() {
 
                 </div>
             </main>
-
-            <ProfileFooter activeTab="chats" />
         </div>
     );
 }

@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./ProfileHeader.css";
 
 function ProfileHeader() {
+  const navigate = useNavigate();
+
   const handleBack = () => {
-    console.log("رجوع للصفحة السابقة");
+    navigate(-1);
   };
 
   return (
@@ -12,7 +15,7 @@ function ProfileHeader() {
 
       
       <div className="header-left-side">
-        <span className="brand-name">نفس</span>
+        <button type="button" className="brand-name" onClick={() => navigate("/doctor/dashboard")}>نفس</button>
         <button
           className="profile-icon-btn back-btn"
           onClick={handleBack}

@@ -19,6 +19,9 @@ import Chats from './pages/Chats/Chats';
 import Library from './pages/Library/Library';
 import Analysis from './pages/Analysis/Analysis';
 import QuizPage from './Components/QuizPage/QuizPage';
+import AllArticles from './pages/AllArticles/AllArticles';
+import AllReviews from './pages/AllReviews/AllReviews';
+import ProfileProgress from './pages/ProfileProgress/ProfileProgress';
 
 function App() {
   return (
@@ -33,21 +36,39 @@ function App() {
         <Route path="/verification" element={<Verification />} />
         <Route path="/dashboard" element={<Dashboard />} />
 
-        <Route path="/DoctorCheckoutPage" element={<DoctorCheckoutPage />} />
-        <Route path="/Payments" element={<Payments />} />
+        <Route path="/doctor-checkout" element={<DoctorCheckoutPage />} />
+        <Route path="/DoctorCheckoutPage" element={<Navigate to="/doctor-checkout" replace />} />
+        <Route path="/Payments" element={<Navigate to="/payments" replace />} />
         <Route path="/payments" element={<Payments />} />
+        <Route path="/my-sessions" element={<Navigate to="/dashboard" replace state={{ targetTab: 'sessions' }} />} />
 
         <Route path="/quiz" element={<QuizPage />} />
-        <Route path="/doctor-profile" element={<DoctorProfile />} />
-        <Route path="/doctor-work" element={<DoctorWork />} />
-        <Route path="/patient-profile" element={<PatientProfile />} />
-        <Route path="/patients" element={<Patients />} />
-        <Route path="/meetings" element={<Meetings />} />
-        <Route path="/sessions" element={<Sessions />} />
-        <Route path="/timetable" element={<TimeTable />} />
-        <Route path="/chats" element={<Chats />} />
-        <Route path="/library" element={<Library />} />
-        <Route path="/analysis" element={<Analysis />} />
+        <Route path="/all-articles" element={<AllArticles />} />
+        <Route path="/all-reviews" element={<AllReviews />} />
+        <Route path="/profile-progress" element={<ProfileProgress />} />
+        <Route path="/doctor" element={<Navigate to="/doctor/dashboard" replace />} />
+        <Route path="/doctor/dashboard" element={<DoctorWork />} />
+        <Route path="/doctor/profile" element={<DoctorProfile />} />
+        <Route path="/doctor/patient-profile" element={<PatientProfile />} />
+        <Route path="/doctor/patients" element={<Patients />} />
+        <Route path="/doctor/meetings" element={<Meetings />} />
+        <Route path="/doctor/sessions" element={<Sessions />} />
+        <Route path="/doctor/timetable" element={<TimeTable />} />
+        <Route path="/doctor/chats" element={<Chats />} />
+        <Route path="/doctor/library" element={<Library />} />
+        <Route path="/doctor/analysis" element={<Analysis />} />
+
+        <Route path="/doctor-profile" element={<Navigate to="/doctor/profile" replace />} />
+        <Route path="/doctor-work" element={<Navigate to="/doctor/dashboard" replace />} />
+        <Route path="/patient-profile" element={<Navigate to="/doctor/patient-profile" replace />} />
+        <Route path="/patients" element={<Navigate to="/doctor/patients" replace />} />
+        <Route path="/meetings" element={<Navigate to="/doctor/meetings" replace />} />
+        <Route path="/sessions" element={<Navigate to="/doctor/sessions" replace />} />
+        <Route path="/timetable" element={<Navigate to="/doctor/timetable" replace />} />
+        <Route path="/chats" element={<Navigate to="/doctor/chats" replace />} />
+        <Route path="/library" element={<Navigate to="/doctor/library" replace />} />
+        <Route path="/analysis" element={<Navigate to="/doctor/analysis" replace />} />
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </Router>
   );

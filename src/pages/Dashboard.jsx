@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Activity, BookOpen, HeartHandshake, Play, Pause, X } from 'lucide-react';
+import { Sparkles, Activity, BookOpen, HeartHandshake, MessageCircle, Play, Pause, X } from 'lucide-react';
 import GratitudeJournal from '../components/ui/GratitudeJournal';
 import MyDiaryPage from './MyDiaryPage';
 import Header from '../components/layout/Header';
@@ -408,6 +408,25 @@ export default function Dashboard() {
                 onUpdateEntry={handleUpdateEntry}
                 onOpenJournal={() => setShowJournal(true)}
               />
+            </motion.div>
+          )}
+
+          {activeTab === 'chat' && (
+            <motion.div key="chat-tab" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }}>
+              <div className="bg-white p-8 rounded-3xl border border-neutral-100 text-right space-y-5">
+                <div className="w-12 h-12 bg-[#E6F0EF] text-[#0F766E] rounded-2xl flex items-center justify-center mr-auto">
+                  <MessageCircle className="w-6 h-6" />
+                </div>
+                <div className="space-y-2">
+                  <h2 className="text-2xl font-black text-neutral-900">محادثات الدعم</h2>
+                  <p className="text-sm text-neutral-500 leading-relaxed">
+                    تواصل مع فريق الدعم أو تابع محادثاتك مع المختصين بعد حجز الجلسات.
+                  </p>
+                </div>
+                <button onClick={() => setActiveTab('explore')} className="bg-[#0F766E] text-white font-bold px-6 py-3 rounded-full hover:bg-[#316764] transition-all">
+                  اكتشف المختصين
+                </button>
+              </div>
             </motion.div>
           )}
 

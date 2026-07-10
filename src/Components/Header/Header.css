@@ -14,7 +14,10 @@
 }
 
 .header-logo {
+  background: transparent;
+  border: 0;
   color: var(--primary-color);
+  cursor: pointer;
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
@@ -28,6 +31,9 @@
 }
 
 .icon-wrapper {
+  background: transparent;
+  border: 0;
+  color: inherit;
   cursor: pointer;
   display: flex;
   align-items: center;

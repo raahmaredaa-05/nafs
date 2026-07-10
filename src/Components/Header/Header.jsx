@@ -1,18 +1,21 @@
 import { Bell, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
+  const navigate = useNavigate();
+
   return (
     <header className="main-header">
-      <div className="header-logo">نفس</div>
+      <button type="button" className="header-logo" onClick={() => navigate("/doctor/dashboard")}>نفس</button>
 
       <div className="header-icons">
-        <div className="icon-wrapper" title="الإشعارات">
+        <button type="button" className="icon-wrapper" title="الإشعارات">
           <Bell size={24} strokeWidth={1.5} />
-        </div>
-        <div className="icon-wrapper" title="الملف الشخصي">
+        </button>
+        <button type="button" className="icon-wrapper" title="الملف الشخصي" onClick={() => navigate("/doctor/profile")}>
           <User size={24} strokeWidth={1.5} />
-        </div>
+        </button>
       </div>
     </header>
   );
