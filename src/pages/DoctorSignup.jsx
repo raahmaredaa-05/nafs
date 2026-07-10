@@ -23,12 +23,20 @@ const DoctorSignup = () => {
           <p className="text-sm text-gray-500 mb-10">أدخل بياناتك للانضمام إلى منصة نفس</p>
 
           <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+<<<<<<< HEAD
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+=======
+            <div className="grid grid-cols-2 gap-4">
+>>>>>>> origin/teammate-edits
               <Input placeholder="الاسم الكامل" value={formData.fullName} onChange={(e) => setFormData({...formData, fullName: e.target.value})} />
               <Input placeholder="البريد الإلكتروني" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
             </div>
 
+<<<<<<< HEAD
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+=======
+            <div className="grid grid-cols-2 gap-4">
+>>>>>>> origin/teammate-edits
               <Input placeholder="التخصص" value={formData.specialty} onChange={(e) => setFormData({...formData, specialty: e.target.value})} />
               <Input placeholder="رقم ترخيص الهيئة" value={formData.license} onChange={(e) => setFormData({...formData, license: e.target.value})} />
             </div>
@@ -56,7 +64,10 @@ const DoctorSignup = () => {
           </form>
         </div>
 
+<<<<<<< HEAD
         {/* الجزء الأيمن: البطاقة الجانبية */}
+=======
+>>>>>>> origin/teammate-edits
         <div className="w-full md:w-1/2 bg-[#E6F0EF] p-10 flex flex-col items-center text-center justify-center">
           <h3 className="text-[#2A5C58] font-medium mb-8 uppercase tracking-widest">Doctor</h3>
           <h2 className="text-2xl font-bold text-[#2A5C58] mb-4">انضم إلى مجتمعنا الصحي الرقمي</h2>

@@ -7,7 +7,10 @@ const Input = ({ type = "text", placeholder, value = "", onChange }) => {
   const isPasswordField = type === "password";
   const inputType = isPasswordField ? (showPassword ? "text" : "password") : type;
   
+<<<<<<< HEAD
   // الحالة: الحقل عليه تركيز أو يوجد به نص مكتوب
+=======
+>>>>>>> origin/teammate-edits
   const isActive = isFocused || value.length > 0;
 
   return (
