@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
-=======
-import { motion } from 'framer-motion'; // 1. استيراد motion للتأثيرات الانتقالية
->>>>>>> origin/teammate-edits
+import { motion } from 'framer-motion';
 import Input from '../components/ui/Input';
 
 const quotes = [
@@ -26,103 +23,74 @@ const Auth = () => {
   }, []);
 
   return (
-<<<<<<< HEAD
-    <div className="flex h-screen w-full bg-white overflow-hidden font-sans relative">
-=======
-    // 2. تغليف الصفحة بـ motion.div وتطبيق تأثير تدرج الظهور (Fade-in Zoom)
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.98 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
       className="flex h-screen w-full bg-white overflow-hidden font-sans relative"
     >
->>>>>>> origin/teammate-edits
-      {/* الـ Navbar */}
       <nav className="absolute top-0 w-full p-10 flex justify-between items-center z-50 flex-row-reverse">
         <img src="/nafs_icon.png" alt="Nafs Logo" className="h-20 w-auto drop-shadow-lg" />
         <button className="text-[#316764] font-bold text-lg hover:underline transition">مساعدة؟</button>
       </nav>
 
-<<<<<<< HEAD
-      {/* الجهة اليسرى: الصورة */}
-=======
-      {/* الجهة اليسرى: كارت الاقتباسات والخلفية */}
->>>>>>> origin/teammate-edits
-      <div 
-        className="hidden lg:flex w-1/2 bg-cover bg-center items-end p-16 relative" 
+      <div
+        className="hidden lg:flex w-1/2 bg-cover bg-center items-end p-16 relative"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop')" }}
       >
-        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute inset-0 bg-black/10" />
         <div className="relative z-10 bg-white/10 backdrop-blur-2xl border border-white/20 p-10 rounded-[2rem] shadow-2xl max-w-sm">
           <p className="text-white text-xl leading-relaxed italic animate-pulse">"{quotes[quoteIndex]}"</p>
           <p className="text-white/70 mt-6 text-sm font-light">~ سلامتك النفسية</p>
         </div>
       </div>
 
-      {/* الجهة اليمنى: نموذج التسجيل */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 bg-white">
         <div className="w-full max-w-sm text-right">
           <h1 className="text-3xl font-bold text-[#2A5C58] mb-2">ابدأ رحلة الهدوء</h1>
           <p className="text-gray-500 mb-8 font-light">انضم إلى مجتمع "نفس" واكتشف التوازن الذي تستحقه.</p>
-          
+
           <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-            <Input 
-              type="email" 
-              placeholder="البريد الإلكتروني" 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
+            <Input
+              type="email"
+              placeholder="البريد الإلكتروني"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <Input 
-              type="password" 
-              placeholder="كلمة المرور" 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
+            <Input
+              type="password"
+              placeholder="كلمة المرور"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-<<<<<<< HEAD
-            <button 
-  onClick={() => navigate('/dashboard')} 
-  className="w-full py-4 bg-gradient-to-r from-[#316764] to-[#83B9B5] text-white rounded-full font-bold shadow-md hover:scale-[1.02] transition-all"
->
-  تسجيل الدخول
-</button>
-            <button className="w-full py-4 bg-gradient-to-r from-[#316764] to-[#83B9B5] text-white rounded-full font-bold shadow-md hover:scale-[1.02] transition-all">
+
+            <button
+              type="button"
+              onClick={() => navigate('/dashboard')}
+              className="w-full py-4 bg-gradient-to-r from-[#316764] to-[#83B9B5] text-white rounded-full font-bold shadow-md hover:scale-[1.02] transition-all cursor-pointer"
+            >
+              تسجيل الدخول
+            </button>
+
+            <button
+              type="button"
+              className="w-full py-4 bg-gradient-to-r from-[#316764] to-[#83B9B5] text-white rounded-full font-bold shadow-md hover:scale-[1.02] transition-all cursor-pointer"
+            >
               تسجيل الدخول كطبيب
             </button>
-            <button 
-              onClick={() => navigate('/select-role')} 
-              className="w-full py-4 bg-gray-100 text-[#316764] rounded-full font-bold hover:bg-gray-200 transition-all"
+
+            <button
+              type="button"
+              onClick={() => navigate('/select-role')}
+              className="w-full py-4 bg-gray-100 text-[#316764] rounded-full font-bold hover:bg-gray-200 transition-all cursor-pointer"
             >
               إنشاء حساب مجاني
             </button>
           </form>
         </div>
       </div>
-    </div>
-=======
-            
-            <button 
-              onClick={() => navigate('/dashboard')} 
-              className="w-full py-4 bg-gradient-to-r from-[#316764] to-[#83B9B5] text-white rounded-full font-bold shadow-md hover:scale-[1.02] transition-all cursor-pointer"
-            >
-              تسجيل الدخول
-            </button>
-            
-            <button className="w-full py-4 bg-gradient-to-r from-[#316764] to-[#83B9B5] text-white rounded-full font-bold shadow-md hover:scale-[1.02] transition-all cursor-pointer">
-              تسجيل الدخول كطبيب
-            </button>
-            
-            <button 
-              onClick={() => navigate('/select-role')} 
-              className="w-full py-4 bg-gray-100 text-[#316764] rounded-full font-bold hover:bg-gray-200 transition-all cursor-pointer"
-            >
-              إنشاء حساب مجاني
-            </button>
-          </form>   
-        </div>
-      </div>
     </motion.div>
->>>>>>> origin/teammate-edits
   );
 };
 

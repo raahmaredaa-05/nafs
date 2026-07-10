@@ -19,7 +19,7 @@ const Header = ({ activeTab, setActiveTab }) => {
       
       {/* اللوجو */}
       <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavigation('home')}>
-        <img src="public/nafs_icon.png" alt="logo icon" className="w-15 h-15 min-w-[24px] min-h-[24px] object-contain" />
+        <img src="/nafs_icon.png" alt="logo icon" className="w-15 h-15 min-w-[24px] min-h-[24px] object-contain" />
         <div className="text-2xl font-black text-[#0F766E] font-sans tracking-wide">
           <span>نفس</span>
         </div>

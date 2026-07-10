@@ -14,20 +14,18 @@ const DiaryEntry = ({ entry, onView, onEdit }) => {
   };
 
   return (
-  <div className="bg-[#83B9B5]/20 p-6 rounded-3xl border border-neutral-100 flex flex-row-reverse items-center justify-between gap-6 shadow-sm">
-    <div className="flex-1 text-right">
-      <div className="flex flex-row-reverse items-center gap-2 mb-2">
-        <span className="text-[11px] text-neutral-400 font-medium">{entry.date}</span>
-        <h4 className="font-bold text-neutral-900">{entry.title}</h4>
-           <span className="text-xs font-bold text-neutral-600">{entry.mood}</span>
+    <div className="bg-[#83B9B5]/20 p-6 rounded-3xl border border-neutral-100 flex flex-row-reverse items-center justify-between gap-6 shadow-sm">
+      <div className="flex-1 text-right">
+        <div className="flex flex-row-reverse items-center gap-2 mb-2">
+          <span className="text-[11px] text-neutral-400 font-medium">{entry.date}</span>
+          <h4 className="font-bold text-neutral-900">{entry.title}</h4>
           <div className="flex flex-row-reverse items-center gap-1.5 bg-neutral-50 px-3 py-1 rounded-full border border-neutral-100">
-        <span className="text-xs font-bold text-neutral-600">{entry.mood}</span>
-        <span className="text-sm">{getMoodEmoji(entry.mood)}</span>
+            <span className="text-xs font-bold text-neutral-600">{entry.mood}</span>
+            <span className="text-sm">{getMoodEmoji(entry.mood)}</span>
+          </div>
+        </div>
+        <p className="text-sm text-neutral-500 truncate">{entry.content}</p>
       </div>
-      </div>
-      <p className="text-sm text-neutral-500 truncate">{entry.content}</p>
-      
-    </div>
     
     <div className="flex flex-col gap-2 shrink-0">
       <button onClick={() => onView(entry)} className="flex items-center gap-1 text-xs bg-neutral-50 hover:bg-neutral-100 px-4 py-2 rounded-xl text-neutral-600 transition-all">
@@ -98,11 +96,7 @@ const MyDiaryPage = ({ entries, onUpdateEntry, onOpenJournal }) => {
           
          <div className="space-y-4">
   {moods.map((moodItem) => {
-  // أضيفي هذا السطر لرؤية ما هو مخزن فعلياً في المذكرات
-  console.log("المذكرات المخزنة حالياً:", entries.map(e => `"${e.mood}"`)); 
-
-  const total = weeklyEntries.length;
-  const percentage = total > 0 ? (moodItem.count / total) * 100 : 0;
+    const percentage = total > 0 ? (moodItem.count / total) * 100 : 0;
     
     return (
       <div key={moodItem.label} className="space-y-1">
@@ -121,9 +115,9 @@ const MyDiaryPage = ({ entries, onUpdateEntry, onOpenJournal }) => {
   })}
 </div>
         </div>
-<button 
-      onClick={onOpenJournal} 
-      className="bg-gradient-to-r from-[#316764] to-[#83B9B5] text-white rounded-full font-bold shadow-md hover:scale-[1.02] transition-all"
+<button
+      onClick={onOpenJournal}
+      className="px-6 py-3 bg-gradient-to-r from-[#316764] to-[#83B9B5] text-white rounded-full font-bold shadow-md hover:scale-[1.02] transition-all"
     >
       + تدوين جديد
     </button>        

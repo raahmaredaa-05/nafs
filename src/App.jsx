@@ -3,49 +3,45 @@ import Auth from './pages/Auth';
 import SelectionPage from './pages/SelectionPage';
 import DoctorSignup from './pages/DoctorSignup';
 import Verification from './pages/Verification'; 
-<<<<<<< HEAD
-import Dashboard from './pages/Dashboard'; // تأكد من استيراد الصفحة
-=======
 import Dashboard from './pages/Dashboard'; 
 import DoctorCheckoutPage from './pages/DoctorCheckoutPage';
 import Payments from './pages/Payments';
->>>>>>> origin/teammate-edits
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Auth />} />
+        <Route path="/auth" element={<Auth />} />
         <Route path="/select-role" element={<SelectionPage />} />
         <Route path="/doctor-signup" element={<DoctorSignup />} />
         <Route path="/verification" element={<Verification />} />
         <Route path="/dashboard" element={<Dashboard />} />
-<<<<<<< HEAD
+        
+        {/* Doctor Checkout Route */}
+        <Route 
+          path="/DoctorCheckoutPage" 
+          element={
+            <DoctorCheckoutPage 
+              doctorData={{
+                name: "د. فيصل العمر",
+                specialty: "استشاري الطب النفسي",
+                rating: "4.9",
+                reviewsCount: "120",
+                location: "الرياض",
+                price: "250",
+                bio: "نص تجريبي...",
+                imageUrl: "...",
+                specialties: [], 
+                reviews: []      
+              }} 
+            />
+          } 
+        />   
+        
+        <Route path="/Payments" element={<Payments />} />
       </Routes>
-=======
-<Route 
-  path="/DoctorCheckoutPage" 
-  element={
-   <DoctorCheckoutPage 
-  doctorData={{
-    name: "د. فيصل العمر",
-    specialty: "استشاري الطب النفسي",
-    rating: "4.9",
-    reviewsCount: "120",
-    location: "الرياض",
-    price: "250",
-    bio: "نص تجريبي...",
-    imageUrl: "...",
-    specialties: [], 
-    reviews: []      
-  }} 
-/>
-  } 
-/>   
-<Route path="/Payments" element={<Payments />} />
-<Route path="/auth" element={<Auth />} />
-   </Routes>
->>>>>>> origin/teammate-edits
     </Router>
   );
 }
