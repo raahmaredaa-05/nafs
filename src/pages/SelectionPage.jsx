@@ -31,11 +31,11 @@ const SelectionPage = () => {
               كن جزءاً من النخبة، سهل عملية العلاج ووصل مع محتاجين للدعم النفسي في مجتمع أكثر أماناً.
             </p>
             <button 
-  onClick={() => navigate('/doctor-signup')} 
-  className="w-full py-4 bg-[#316764] text-white rounded-full font-bold hover:bg-[#254f4c] transition"
->
-  انضم الآن +
-</button>
+              onClick={() => navigate('/doctor-signup')} 
+              className="w-full py-4 bg-[#316764] text-white rounded-full font-bold hover:bg-[#254f4c] transition"
+            >
+              انضم الآن +
+            </button>
           </div>
 
           {/* كارت المستخدم */}
@@ -47,7 +47,11 @@ const SelectionPage = () => {
             <p className="text-gray-500 mb-8 leading-relaxed">
               ابحث عن السلام الداخلي، سهل عملية العلاج ووصل مع مختصين للدعم النفسي في مجتمع أكثر أماناً.
             </p>
-            <button className="w-full py-4 bg-[#316764] text-white rounded-full font-bold hover:bg-[#254f4c] transition">
+            {/* التعديل هنا لربط الزر بصفحة التسجيل للأفراد */}
+            <button 
+              onClick={() => navigate('/user-signup')} 
+              className="w-full py-4 bg-[#316764] text-white rounded-full font-bold hover:bg-[#254f4c] transition"
+            >
               ابدأ رحلتك +
             </button>
           </div>

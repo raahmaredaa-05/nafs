@@ -6,6 +6,7 @@ import Verification from './pages/Verification';
 import Dashboard from './pages/Dashboard'; 
 import DoctorCheckoutPage from './pages/DoctorCheckoutPage';
 import Payments from './pages/Payments';
+import UserSignup from './pages/UserSignup'; // تم تعديل المسار هنا لـ ./pages/UserSignup
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/select-role" element={<SelectionPage />} />
         <Route path="/doctor-signup" element={<DoctorSignup />} />
+        
+        {/* مسار الأفراد الصحيح */}
+        <Route path="/user-signup" element={<UserSignup />} />
+        
         <Route path="/verification" element={<Verification />} />
         <Route path="/dashboard" element={<Dashboard />} />
         
@@ -41,6 +46,7 @@ function App() {
         />   
         
         <Route path="/Payments" element={<Payments />} />
+        
       </Routes>
     </Router>
   );
