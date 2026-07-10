@@ -1,14 +1,19 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import ProfileHeader from "./ProfileHeader";
+import { useNavigate, useLocation } from "react-router-dom";
+import Header from "../../components/layout/Header";
 import doctorImg from "../../assets/sara.png";
 import "./DoctorProfile.css";
-
+import ProfileFooter from "./ProfileFooter"; 
 function DoctorProfile() {
   const navigate = useNavigate();
-  const [isEditing, setIsEditing] = useState(false);
-  const [profile, setProfile] = useState({
-    name: "د. سارة أحمد",
+  const location = useLocation();
+   
+  // قراءة دور المستخدم الحالي ديناميكياً من الـ localStorage اللي تم حفظه عند تسجيل الدخول
+  const currentUserRole = localStorage.getItem('userRole') || 'user';
+
+  // استقبال داتا الطبيب الممررة من صفحة الـ Booking، أو استخدام الداتا الافتراضية كـ Fallback
+  const doctorData = location.state?.doctor || {
+    name: "د. سارة الأحمد",
     specialty: "معالجة نفسية مختصة في العلاج السلوكي المعرفي",
     availability: "متاح اليوم",
     sessions: "+1,200",
@@ -22,31 +27,39 @@ function DoctorProfile() {
       "اضطرابات ما بعد الصدمة",
       "تقدير الذات",
     ],
-  });
+    image: doctorImg
+  };
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [profile, setProfile] = useState(doctorData);
 
   const update = (key, value) => setProfile({ ...profile, [key]: value });
 
   return (
-    <div className="doctor-profile-page">
-      <ProfileHeader />
+    <div className="doctor-profile-page" dir="rtl">
+      {/* الـ Header الموحد للموقع من الـ layout */}
+      <Header />
 
       <main className="profile-main-content">
         <div className="profile-container">
 
-          <div className="profile-edit-toolbar">
-            <button
-              className={`profile-edit-toggle ${isEditing ? "saving" : ""}`}
-              onClick={() => setIsEditing(!isEditing)}
-            >
-              <i className={`fa-solid ${isEditing ? "fa-floppy-disk" : "fa-pen-to-square"}`}></i>
-              {isEditing ? " حفظ التغييرات" : " تعديل الملف الشخصي"}
-            </button>
-          </div>
+          {/* التحكم في ظهور شريط التعديل: يظهر فقط إذا كان الحساب الحالي لطبيب */}
+          {currentUserRole === 'doctor' && (
+            <div className="profile-edit-toolbar">
+              <button
+                className={`profile-edit-toggle ${isEditing ? "saving" : ""}`}
+                onClick={() => setIsEditing(!isEditing)}
+              >
+                <i className={`fa-solid ${isEditing ? "fa-floppy-disk" : "fa-pen-to-square"}`}></i>
+                {isEditing ? " حفظ التغييرات" : " تعديل الملف الشخصي"}
+              </button>
+            </div>
+          )}
 
           <section className="doctor-main-card">
-
             <div className="doctor-image-container-right">
-              <img src={doctorImg} alt={profile.name} className="doctor-rect-avatar" />
+              {/* عرض صورة الطبيب الديناميكية أو الافتراضية */}
+              <img src={profile.image || doctorImg} alt={profile.name} className="doctor-rect-avatar" />
 
               <div className="compatibility-overlay-card">
                 <div className="compat-text-side">
@@ -63,7 +76,6 @@ function DoctorProfile() {
             </div>
 
             <div className="doctor-details-container-left">
-
               <div className="doctor-text-block">
                 {isEditing ? (
                   <input
@@ -143,9 +155,7 @@ function DoctorProfile() {
           </section>
 
           <section className="doctor-secondary-card">
-
             <div className="secondary-right-side">
-
               <div className="bio-section">
                 <h3 className="section-title">حول {profile.name}</h3>
                 {isEditing ? (
@@ -183,7 +193,6 @@ function DoctorProfile() {
 
               <div className="qualifications-section">
                 <h3 className="section-title">المؤهلات والخبرة</h3>
-
                 <div className="timeline-item">
                   <div className="timeline-icon-wrapper">
                     <i className="fa-solid fa-graduation-cap timeline-icon-ai"></i>
@@ -249,6 +258,8 @@ function DoctorProfile() {
           </section>
         </div>
       </main>
+       {currentUserRole === 'user' && <ProfileFooter />}
+      
     </div>
   );
 }

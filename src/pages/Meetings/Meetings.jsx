@@ -1,12 +1,12 @@
 import React from 'react';
-import ProfileHeader from '../../Components/Header/Header';
+import Header from "../../components/layout/Header";
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import './Meetings.css';
 
 function Meetings() {
     return (
         <div className="meetings-page">
-            <ProfileHeader />
+            <Header />
 
             <main className="doctor-work-main">
                 <div className="doctor-work-container">

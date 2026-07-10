@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ProfileHeader from '../../Components/Header/Header';
+import Header from "../../components/layout/Header";
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import './Patients.css';
 
@@ -44,7 +44,7 @@ function Patients() {
 
   return (
     <div className="patients-page">
-      <ProfileHeader />
+      <Header />
 
       <main className="doctor-work-main">
         <div className="doctor-work-container">

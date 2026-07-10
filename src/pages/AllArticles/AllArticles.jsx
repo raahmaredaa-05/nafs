@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ProfileHeader from '../../Components/Header/Header';
+import Header from "../../components/layout/Header"; // تم استيراده هنا كـ Header
 import './AllArticles.css';
 
 const ARTICLES = [
@@ -20,7 +20,8 @@ function AllArticles() {
 
   return (
     <div className="all-articles-page" id="all-articles">
-      <ProfileHeader />
+      {/* تم التعديل هنا ليصبح الكومبوننت الصحيح المستورد بالأعلى */}
+      <Header /> 
 
       <main className="all-articles-main">
         <div className="all-articles-container">

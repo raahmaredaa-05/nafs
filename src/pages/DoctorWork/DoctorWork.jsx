@@ -1,13 +1,13 @@
 import React from "react";
-import ProfileHeader from "../../Components/Header/Header";
+import Header from "../../components/layout/Header";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import Dashboard from "../../Components/Dashboard/Dashboard";
+import Dashboard from "../Dashboard/Dashboard";
 import "./DoctorWork.css";
 
 function DoctorWork() {
     return (
         <div className="doctor-work-page">
-            <ProfileHeader />
+            <Header />
 
             <main className="doctor-work-main">
                 <div className="doctor-work-container">

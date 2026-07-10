@@ -68,11 +68,11 @@ const Verification = () => {
               
               {/* 3. الزر المعدل */}
               <button 
-                onClick={() => navigate('/doctor/dashboard')} 
-                className="px-10 py-4 bg-[#2A5C58] text-white rounded-full font-bold hover:bg-[#1f4a46] transition"
-              >
-                الانتقال إلى لوحة الطبيب
-              </button>
+      onClick={() => navigate('/auth')} 
+      className="px-10 py-4 bg-[#2A5C58] text-white rounded-full font-bold hover:bg-[#1f4a46] transition shadow-lg hover:shadow-xl"
+    >
+      العودة إلى صفحة تسجيل الدخول
+    </button>
             </div>
           )}
         </div>

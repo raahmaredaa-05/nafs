@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ProfileHeader from '../DoctorProfile/ProfileHeader';
+import Header from "../../components/layout/Header";
 import './AllReviews.css';
 
 const REVIEWS = [
@@ -17,7 +17,7 @@ function AllReviews() {
 
   return (
     <div className="all-reviews-page">
-      <ProfileHeader />
+      <Header />
 
       <main className="all-reviews-main">
         <div className="all-reviews-container">

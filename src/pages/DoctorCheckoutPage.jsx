@@ -1,15 +1,14 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; 
 import { Star, ShieldCheck, Video, Calendar, Clock, ArrowRight, Bell, Settings, Award, Users, BookOpen } from 'lucide-react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 
 const DoctorCheckoutPage = () => {
   const navigate = useNavigate(); // 2. تفعيل التوجيه الذكي
-  const location = useLocation();
   const [activeTab, setActiveTab] = React.useState('home');
 
-  const doctorData = location.state?.doctorData || {
+  const doctorData = {
     name: "د. فيصل العمر",
     title: "استشاري الطب النفسي والعلاج السلوكي المعرفي",
     rating: 4.9,

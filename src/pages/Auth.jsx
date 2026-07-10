@@ -22,6 +22,22 @@ const Auth = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // دالة التعامل مع تسجيل دخول المستخدم العادي (User)
+  const handleUserLogin = () => {
+    // حفظ الـ role في الـ localStorage كـ user
+    localStorage.setItem('userRole', 'user');
+    // التوجيه لصفحة الـ dashboard الخاصة بالـ user
+    navigate('/dashboard');
+  };
+
+  // دالة التعامل مع تسجيل دخول الطبيب (Doctor)
+  const handleDoctorLogin = () => {
+    // حفظ الـ role في الـ localStorage كـ doctor
+    localStorage.setItem('userRole', 'doctor');
+    // التوجيه لصفحة الـ dashboard الخاصة بالدكتور
+    navigate('/doctor/dashboard');
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.98 }}
@@ -65,17 +81,19 @@ const Auth = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
+            {/* زرار تسجيل دخول المستخدم */}
             <button
               type="button"
-              onClick={() => navigate('/dashboard')}
+              onClick={handleUserLogin}
               className="w-full py-4 bg-gradient-to-r from-[#316764] to-[#83B9B5] text-white rounded-full font-bold shadow-md hover:scale-[1.02] transition-all cursor-pointer"
             >
               تسجيل الدخول
             </button>
 
+            {/* زرار تسجيل دخول الطبيب */}
             <button
               type="button"
-              onClick={() => navigate('/doctor/dashboard')}
+              onClick={handleDoctorLogin}
               className="w-full py-4 bg-gradient-to-r from-[#316764] to-[#83B9B5] text-white rounded-full font-bold shadow-md hover:scale-[1.02] transition-all cursor-pointer"
             >
               تسجيل الدخول كطبيب
